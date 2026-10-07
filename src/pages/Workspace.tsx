@@ -66,9 +66,26 @@ export const Workspace = () => {
       console.error(error);
     }
 
-    setConversations(
-      (conversationData ?? []) as Conversation[]
-    );
+    const formattedConversations: Conversation[] =
+      (conversationData ?? []).map((conversation: any) => {
+        const customer = Array.isArray(
+          conversation.customers
+        )
+          ? conversation.customers[0]
+          : conversation.customers;
+
+        return {
+          id: conversation.id,
+          status: conversation.status,
+          updated_at: conversation.updated_at,
+          customers: {
+            name: customer?.name ?? "Unknown Customer",
+            email: customer?.email ?? null,
+          },
+        };
+      });
+
+    setConversations(formattedConversations);
 
     setLoading(false);
   }

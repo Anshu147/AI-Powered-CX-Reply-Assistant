@@ -1,8 +1,9 @@
 import {
-    FormEvent,
+    
     useEffect,
     useState,
 } from "react";
+import type { FormEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 

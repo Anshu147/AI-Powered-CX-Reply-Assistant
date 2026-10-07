@@ -1,8 +1,9 @@
 import {
-    FormEvent,
+
     useEffect,
     useState,
 } from "react";
+import type { FormEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 
@@ -119,9 +120,26 @@ export const Conversation = () => {
             return;
         }
 
-        setConversation(
-            conversationData as ConversationData
-        );
+        const customer = Array.isArray(
+            conversationData.customers
+        )
+            ? conversationData.customers[0]
+            : conversationData.customers;
+
+        const formattedConversation: ConversationData = {
+            id: conversationData.id,
+            brand_id: conversationData.brand_id,
+            customer_id: conversationData.customer_id,
+            status: conversationData.status,
+            customers: {
+                id: customer?.id ?? "",
+                name: customer?.name ?? "Unknown Customer",
+                email: customer?.email ?? null,
+                phone: customer?.phone ?? null,
+            },
+        };
+
+        setConversation(formattedConversation);
 
         const [
             { data: messageData },
