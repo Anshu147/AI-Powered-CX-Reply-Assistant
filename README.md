@@ -743,9 +743,3 @@ Introduce job queues for knowledge ingestion, embedding generation, bulk documen
 - Centralized observability
 
 ---
-
-## License
-
-This project was created as a technical assessment and portfolio project.
-
-Choose and add a license file (for example, MIT), or state "All rights reserved" here.
