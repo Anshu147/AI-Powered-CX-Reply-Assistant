@@ -487,9 +487,7 @@ export const Conversation = () => {
                             </p>
                         </div>
 
-                        <span className="status open">
-                            {conversation.status}
-                        </span>
+                       
                     </div>
 
                     <div className="messages">
